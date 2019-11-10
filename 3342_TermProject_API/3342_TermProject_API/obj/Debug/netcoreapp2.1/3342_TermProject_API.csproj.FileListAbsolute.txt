@@ -1,0 +1,14 @@
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\bin\Debug\netcoreapp2.1\3342_TermProject_API.deps.json
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\bin\Debug\netcoreapp2.1\3342_TermProject_API.runtimeconfig.json
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\bin\Debug\netcoreapp2.1\3342_TermProject_API.runtimeconfig.dev.json
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\bin\Debug\netcoreapp2.1\3342_TermProject_API.dll
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.csprojAssemblyReference.cache
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.csproj.CoreCompileInputs.cache
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.RazorAssemblyInfo.cache
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.RazorAssemblyInfo.cs
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.AssemblyInfoInputs.cache
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.AssemblyInfo.cs
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.RazorTargetAssemblyInfo.cache
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\bin\Debug\netcoreapp2.1\3342_TermProject_API.pdb
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.dll
+C:\Users\gavinr\Desktop\3342_TermProjectAPI\3342_TermProject_API\3342_TermProject_API\obj\Debug\netcoreapp2.1\3342_TermProject_API.pdb
