@@ -21,19 +21,19 @@ namespace _3342_TermProject_API.Controllers
         SqlCommand dbCommand = new SqlCommand();
 
         [HttpPost("CreateVirtualWallet/{AccountHolderInformation}/{MerchantAccountID}/{APIKey}")]
-        public int CreateVirtualWallet(Wallet AccountHolderInformation, int MerchantAccountID, string APIKey)
+        public int CreateVirtualWallet(Wallet AccountHolderInformation, string APIKey)
         {
-            Wallet wallet = new Wallet();
-            string name = wallet.Name.ToString();
-            string address = wallet.Address.ToString();
-            string email = wallet.Email.ToString();
-            string bankName = wallet.BankName.ToString();
-            string cardType = wallet.CardType.ToString();
-            string cardNumber = wallet.CardNumber.ToString();
+            string name = AccountHolderInformation.Name.ToString();
+            string address = AccountHolderInformation.Address.ToString();
+            string email = AccountHolderInformation.Email.ToString();
+            string bankName = AccountHolderInformation.BankName.ToString();
+            string cardType = AccountHolderInformation.CardType.ToString();
+            int cardNumber = int.Parse(AccountHolderInformation.CardNumber.ToString());
+            int merchantAccountID = int.Parse(AccountHolderInformation.MerchantAccountID.ToString());
 
             dbCommand.Parameters.Clear();
             dbCommand.CommandType = CommandType.StoredProcedure;
-            dbCommand.CommandText = "TP_CheckUserExists";
+            dbCommand.CommandText = "TP_CreateVirtualWallet";
 
             SqlParameter inputName = new SqlParameter("@Name",name );
             SqlParameter inputAddress = new SqlParameter("@Address", address);
@@ -41,6 +41,7 @@ namespace _3342_TermProject_API.Controllers
             SqlParameter inputBankName = new SqlParameter("@BankName", bankName);
             SqlParameter inputCardType = new SqlParameter("@CardType", cardType);
             SqlParameter inputCardNumber = new SqlParameter("@CardNumber", cardNumber);
+            SqlParameter inputMerchantAccountID = new SqlParameter("@MerchantAccountID", merchantAccountID);
 
             inputName.Direction = ParameterDirection.Input;
             inputName.SqlDbType = SqlDbType.VarChar;
@@ -53,7 +54,9 @@ namespace _3342_TermProject_API.Controllers
             inputCardType.Direction = ParameterDirection.Input;
             inputCardType.SqlDbType = SqlDbType.VarChar;
             inputCardNumber.Direction = ParameterDirection.Input;
-            inputCardNumber.SqlDbType = SqlDbType.VarChar;
+            inputCardNumber.SqlDbType = SqlDbType.Int;
+            inputMerchantAccountID.Direction = ParameterDirection.Input;
+            inputMerchantAccountID.SqlDbType = SqlDbType.Int;
 
             dbCommand.Parameters.Add(inputName);
             dbCommand.Parameters.Add(inputAddress);
@@ -127,7 +130,7 @@ namespace _3342_TermProject_API.Controllers
         {
             dbCommand.Parameters.Clear();
             dbCommand.CommandType = CommandType.StoredProcedure;
-            dbCommand.CommandText = "TP_FundAccount";
+            dbCommand.CommandText = "TP_ProcessPayment";
 
             SqlParameter inputVirtualWalletIDReciever = new SqlParameter("@VirtualWalletIDReciever", VirtualWalletIDReciever);
             SqlParameter inputVirtualWalletIDSender = new SqlParameter("@VirtualWalletIDSender", VirtualWalletIDSender);
@@ -153,27 +156,31 @@ namespace _3342_TermProject_API.Controllers
             return count;
         }
         [HttpPut("UpdatePaymentAccount/{VirtualWalletID}/{AccountHolderInformation}/{MerchantAccountID}/{APIKey}")]
-        public int UpdatePaymentAccount(int VirtualWalletID, Wallet AccountHolderInformation, int MerchantAccountID, string APIKey)
-        {
-            Wallet wallet = new Wallet();
-            string name = wallet.Name.ToString();
-            string address = wallet.Address.ToString();
-            string email = wallet.Email.ToString();
-            string bankName = wallet.BankName.ToString();
-            string cardType = wallet.CardType.ToString();
-            string cardNumber = wallet.CardNumber.ToString();
+        public int UpdatePaymentAccount(int VirtualWalletID, Wallet AccountHolderInformation, string APIKey)
+        { 
+            string name = AccountHolderInformation.Name.ToString();
+            string address = AccountHolderInformation.Address.ToString();
+            string email = AccountHolderInformation.Email.ToString();
+            string bankName = AccountHolderInformation.BankName.ToString();
+            string cardType = AccountHolderInformation.CardType.ToString();
+            int cardNumber = int.Parse(AccountHolderInformation.CardNumber.ToString());
+            int MerchantAccountID = int.Parse(AccountHolderInformation.MerchantAccountID.ToString());
 
             dbCommand.Parameters.Clear();
             dbCommand.CommandType = CommandType.StoredProcedure;
             dbCommand.CommandText = "TP_CheckUserExists";
 
+            SqlParameter inputWalletID = new SqlParameter("@Wallet_ID",VirtualWalletID );
             SqlParameter inputName = new SqlParameter("@Account_Email", name);
             SqlParameter inputAddress = new SqlParameter("@Account_Email", address);
             SqlParameter inputEmail = new SqlParameter("@Account_Email", email);
             SqlParameter inputBankName = new SqlParameter("@Account_Email", bankName);
             SqlParameter inputCardType = new SqlParameter("@Account_Email", cardType);
             SqlParameter inputCardNumber = new SqlParameter("@Account_Email", cardNumber);
+            SqlParameter inputMerchantAccountID = new SqlParameter("@MerchantAccontID", MerchantAccountID);
 
+            inputWalletID.Direction = ParameterDirection.Input;
+            inputWalletID.SqlDbType = SqlDbType.Int;
             inputName.Direction = ParameterDirection.Input;
             inputName.SqlDbType = SqlDbType.VarChar;
             inputAddress.Direction = ParameterDirection.Input;
@@ -187,13 +194,14 @@ namespace _3342_TermProject_API.Controllers
             inputCardNumber.Direction = ParameterDirection.Input;
             inputCardNumber.SqlDbType = SqlDbType.VarChar;
 
+            dbCommand.Parameters.Add(inputWalletID);
             dbCommand.Parameters.Add(inputName);
             dbCommand.Parameters.Add(inputAddress);
             dbCommand.Parameters.Add(inputEmail);
             dbCommand.Parameters.Add(inputBankName);
             dbCommand.Parameters.Add(inputCardType);
             dbCommand.Parameters.Add(inputCardNumber);
-
+            dbCommand.Parameters.Add(MerchantAccountID);
 
             int count = db.DoUpdateUsingCmdObj(dbCommand);
             return count;
